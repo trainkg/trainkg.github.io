@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python_initialize</title>
+    <url>/2020/02/15/python-initialize/</url>
+    <content><![CDATA[<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="Python-3-8环境安装"><a href="#Python-3-8环境安装" class="headerlink" title="Python 3.8环境安装"></a>Python 3.8环境安装</h3><p><a href="https://www.lanzous.com/i773wrg" target="_blank" rel="noopener">https://www.lanzous.com/i773wrg</a></p>
+<h3 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h3><p><a href="https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&amp;code=PCC" target="_blank" rel="noopener">https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows&amp;code=PCC</a> </p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>安装</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>再见，科比</title>
     <url>/2020/01/30/%E5%86%8D%E8%A7%81%EF%BC%8C%E7%A7%91%E6%AF%94/</url>
     <content><![CDATA[<p><img src="/mamba/mambaout.jpeg" alt="Mamba Out"></p>
