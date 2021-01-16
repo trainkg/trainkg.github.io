@@ -1,6 +1,6 @@
 ## [Spring cloud LoadBalancer](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#spring-cloud-loadbalancer)
 
-
+[TOC]
 
 spring cloud 提供了自己的客户端和负载均衡抽象以及实现，针对负载均衡机制， `ReactiveLoadBalancer`  支持 **Round-Robin-based** 和 **Random** ， 可以通过接口`ServiceInstanceListSupplier`  获取服务节点列表
 
