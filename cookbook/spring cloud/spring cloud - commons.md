@@ -2,6 +2,8 @@
 
 
 
+[TOC]
+
 
 
 ### 1. spring cloud context : Application Context Service
@@ -613,15 +615,99 @@ public class MyClass {
         useOnlySiteLocalInterfaces: true
   ```
 
-  
-
-##### 
-
-#####  
 
 
 
+### [2.9. HTTP Client Factories](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#http-clients)
+
+ spring cloud commons 提供了beans创建apache HTTP client.(`ApacheHttpClientFactory`)  , 还有 OK HTTP Client (`OkHttpClientFactory`)
+
+> OK HTTP 只有当JAR包存在时候创建
+
+ 同时还提供了连接管理器工厂`ApacheHttpClientConnectionManagerFactory` 创建apache ,`OkHttpClientConnectionPoolFactory` 针对OK HTTP.
+
+如果要自定义这些BEAN细节，需要定义bean `HttpClientBuilder` or `OkHttpClient.Builder` 
+
+可以通过`spring.cloud.httpclientfactories.apache.enabled` or `spring.cloud.httpclientfactories.ok.enabled` 关闭这个特性。
 
 
 
+### [2.10. Enabled Features](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#enabled-features)
 
+spring cloud commons 提供了名为`/features` 的服务， 可以返回特性的类型，名称，版本，小版本
+
+#### [2.10.1. Feature types](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#feature-types)
+
+feature 有两种类型 `abstract ` 和  `named`
+
+**Abstract Feature**
+
+是一个接口或者抽象类，例如 `DiscoveryClient`, `LoadBalancerClient`, or `LockService`, 抽象类或者接口用来在spring上下文中查找对应的实现。
+
+版本信息是通过`bean.getClass().getPackage().getImplementationVersion()` 暴露出来的
+
+**Named Feature**
+
+这种方式没有一个特殊的限制， 比如  “Circuit Breaker”, “API Gateway”, “Spring Cloud Bus”, and others. 这种方式就是要同时指定名称和类型。
+
+#### **[2.10.2. Declaring features](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#declaring-features)**
+
+首先，任意模块都可以定义任意数量的 `HasFeature` Bean. 例如
+
+```java
+@Bean
+public HasFeatures commonsFeatures() {
+  return HasFeatures.abstractFeatures(DiscoveryClient.class, LoadBalancerClient.class);
+}
+
+@Bean
+public HasFeatures consulFeatures() {
+  return HasFeatures.namedFeatures(
+    new NamedFeature("Spring Cloud Bus", ConsulBusAutoConfiguration.class),
+    new NamedFeature("Circuit Breaker", HystrixCommandAspect.class));
+}
+
+@Bean
+HasFeatures localFeatures() {
+  return HasFeatures.builder()
+      .abstractFeature(Something.class)
+      .namedFeature(new NamedFeature("Some Other Feature", Someother.class))
+      .abstractFeature(Somethingelse.class)
+      .build();
+}
+```
+
+### 2.11 [ Spring Cloud Compatibility Verification](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#spring-cloud-compatibility-verification)
+
+为了解决各种各样的用户在配置spring cloud application时候遇到的问题，spring 添加了一个确认机制，如果你启动步骤中和spring cloud不兼容，spring cloud将会给出一个错误报告。
+
+例如：
+
+```txt
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Your project setup is incompatible with our requirements due to following reasons:
+
+- Spring Boot [2.1.0.RELEASE] is not compatible with this Spring Cloud release train
+
+
+Action:
+
+Consider applying the following actions:
+
+- Change Spring Boot version to one of the following versions [1.2.x, 1.3.x] .
+You can find the latest Spring Boot versions here [https://spring.io/projects/spring-boot#learn].
+If you want to learn more about the Spring Cloud Release train compatibility, you can visit this page [https://spring.io/projects/spring-cloud#overview] and check the [Release Trains] section.
+```
+
+如果你要关闭这个特性
+
+`spring.cloud.compatibility-verifier.enabled=false`
+
+如果要混用
+
+`spring.cloud.compatibility-verifier.compatible-boot-versions` 逗号分割填写你的版本
