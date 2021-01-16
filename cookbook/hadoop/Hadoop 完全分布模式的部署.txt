@@ -1,0 +1,57 @@
+Hadoop 完全分布式的配置
+
+1. 为每一台机器按照规范设定主机名称 
+   /etc 目录下修改
+   sudo gedit hostname
+   
+   > 登陆页面提示信息修改
+   sudo gedit passwd
+
+2. 由于hadoop 默认访问的配置目录是
+   /usr/soft/hadoop-2.10.1/etc/hadoop
+   
+   > 修改默认安装目录 /hadoop 为hadoop_alone
+   mv hadoop hadoop_alone
+   
+   > cp -R hadoop_pseudo/ hadoop_cluster
+   > 使用软连接提供默认配置
+   ln -s hadoop_cluster hadoop
+
+3. 停机克隆服务器
+   修改不同主机的主机名称
+   
+4. 数据节点/备份节点采用命令行模式，节省资源 (一般名称节点采用图形模式启动)
+   ctrl + alt + F6  commond model
+   ctrl + alt + F6  图形模式
+   
+==============================================================
+登陆管理
+
+由于集群需要相应的发布和更新，通常配置名称节点可以登陆所有其他的节点。
+
+1. 修改HOST文件
+   sudo gedit /etc/hosts
+2. ping test & 发送hosts文件到所有的服务器上
+   通过远程copy,分别执行所有子服务器
+   sudo scp /etc/hosts root@192.168.182.129:/etc/
+
+
+===============================================================
+修改Hadoop配置文件
+
+1.core-site.xml , s0 作为名称节点
+2.hdfs-site.xml s1,s2 作为数据节点
+  slaves 指定数据节点IP
+3.yarn-site.xml s0 同时作为资源管理节点
+  scp -r /usr/soft/hadoop-2.10.1/etc/hadoop_cluster yuanyu@s1:/usr/soft/hadoop-2.10.1/etc
+  scp -r /usr/soft/hadoop-2.10.1/etc/hadoop_cluster yuanyu@s2:/usr/soft/hadoop-2.10.1/etc
+  scp -r /usr/soft/hadoop-2.10.1/etc/hadoop_cluster yuanyu@s3:/usr/soft/hadoop-2.10.1/etc
+  
+
+==============================================================
+集群启动
+
+1. 格式化
+   hadoop namenode -format
+2. 启动集群
+   start-all.sh

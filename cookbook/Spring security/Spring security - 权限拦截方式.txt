@@ -1,0 +1,51 @@
+Spring security
+https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#el-access-web
+======================================================================================================================
+
+# 核心处理类
+----------------------------------------------------------------------------------------------------------------------
+   org.springframework.security.web.access.intercept.FilterSecurityInterceptor
+   
+   位于springsecurity filter chain 最后一个filter.
+   
+
+# 处理机制
+----------------------------------------------------------------------------------------------------------------------   
+
+	1. org.springframework.security.access.SecurityMetadataSource 
+		
+		该接口指定那些权限要求匹配对应的请求
+		
+		默认实现 org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource
+		
+	2. org.springframework.security.access.AccessDecisionManager
+			
+		该接口指定当前用户是否满足权限设定
+		org.springframework.security.access.vote.AffirmativeBased
+		
+		不同表达式支持
+		org.springframework.security.access.AccessDecisionVoter<S>.vote
+
+# 表达式方式
+----------------------------------------------------------------------------------------------------------------------   
+	
+	表达式方式基类: org.springframework.security.access.expression.SecurityExpressionRoot
+	
+	WebExpressionConfigAttribute
+	
+# 注解方式
+----------------------------------------------------------------------------------------------------------------------   
+   添加@EnableGlobalMethodSecurity(securedEnabled = true)配置，激活@Secured注解
+   @Secured("IS_AUTHENTICATED_ANONYMOUSLY")
+   
+   JSR 标准方式激活处理
+   @EnableGlobalMethodSecurity(jsr250Enabled = true)
+   
+   XML 方式激活
+   <global-method-security pre-post-annotations="enabled"/>  
+   
+   @PreAuthorize("isAnonymous()")
+   @PreFilter
+   @PostAuthorize
+   @PostFilter
+   

@@ -1,0 +1,17 @@
+3.5.8 zookeeper 下载安装
+---------------------------------------------------
+	
+	1. 下载地址
+		https://www.apache.org/dyn/closer.lua/zookeeper/zookeeper-3.5.8/apache-zookeeper-3.5.8-bin.tar.gz
+		
+		通常使用mnt挂载目录
+	
+	2. tar -xzvf apache-zookeeper-3.5.8-bin.tar.gz
+	
+	3. 通常将软件安装至 /usr/soft下
+		mv apache-zookeeper-3.5.8-bin/ /usr/soft/
+		
+	4. 环境变量设定，使用nano编辑ZOOKEEPER_HOME环境变量，并修改对应的PATH设定。
+	   sudo nano environment
+	   source /etc/environment
+	

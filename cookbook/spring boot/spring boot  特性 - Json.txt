@@ -1,0 +1,36 @@
+#官方文档URL
+https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features
+
+1. spring boot 提供三种json集成方案
+ 》Gson    auto configuration 自动装配
+ 》Jackson 默认
+ 》JSON-B  auto configuration 自动装配
+ 
+2. json自定义序列化和反序列化
+  JsonSerializer and JsonDeserializer
+  
+  使用 @JsonComponent 搞定序列和反序列
+  》 You can also use it on classes that contain serializers/deserializers as inner classes
+	@JsonComponent
+	public class Example {
+
+		public static class Serializer extends JsonSerializer<SomeObject> {
+			// ...
+		}
+
+		public static class Deserializer extends JsonDeserializer<SomeObject> {
+			// ...
+		}
+	}
+	   
+
+
+  
+  
+  
+  
+  
+  
+    
+    
+  

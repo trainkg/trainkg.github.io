@@ -1,0 +1,56 @@
+#官方文档URL
+https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features
+
+1. HttpMessageConverters
+2. Custom JSON Serializers and Deserializers
+3. MessageCodesResolver
+4. Static Content
+   spring.mvc.static-path-pattern=/resources/** 
+5. Welcome Page
+6. Custom Favicon 站点图标
+7. Path Matching and Content Negotiation
+   请求路径映射
+8. ConfigurableWebBindingInitializer
+9. 模板引擎 自动装配
+   FreeMarker
+   Groovy
+   Thymeleaf
+   Mustache 
+10. Error Handling
+   异常处理
+11. Spring HATEOAS 应该是一个restful框架支持
+12. CORS Support http跨域
+   spring4.2 mvc开始支持。
+   1. 单个资源  注解 @CrossOrigin   
+   2. 全局资源控制 WebMvcConfigurer  bean 方法 addCorsMappings(CorsRegistry),支持通配符
+13.Spring WebFlux Framework 响应式框架, spring 5.0开始
+14.JAX-RS and Jersey  remote Service & RESTFUL 规范实现，通常我还是使用spring mvc
+15.内嵌服务器
+16. Servlets, Filters, and listeners
+17. web 启动 Servlet Context Initialization
+   org.springframework.boot.web.servlet.ServletContextInitializer
+   onstartup方法
+   
+   容器启动 WebApplicationInitializer监听
+18. @ServletComponentScan 开启servlet相关扫描
+    @WebServlet, @WebFilter, and @WebListener   
+
+19. ServletWebServerApplicationContext
+20.	Customizing Embedded Servlet Containers
+    https://github.com/spring-projects/spring-boot/blob/v2.3.5.RELEASE/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/ServerProperties.java
+21. JSP Limitations
+    打包成可执行的WAR, 不过我想用了spring boot应该没有人愿意选择jsp了。
+22. Graceful shutdown
+    	
+   
+
+
+  
+  
+  
+  
+  
+  
+    
+    
+  

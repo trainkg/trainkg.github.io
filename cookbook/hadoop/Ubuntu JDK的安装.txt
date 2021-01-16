@@ -1,0 +1,21 @@
+============ JAVA
+1. 采用共享文件夹方式上层JDK安装文件tar.
+2. 安装目录选择/usr/soft(新目录)
+3. chmod a+w soft 赋予写权限
+4. 配置文件放置与/etc/enviroment
+5. sudo nano /etc/environment 
+   JAVA_HOME=/usr/soft/jdk1.8.0_212
+   PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games;/usr/soft/jdk1.8.0_212/bin"
+6. source environment
+7. echo $JAVA_HOME
+
+8.  sudo gedit /etc/environment
+    图形编辑器gedit
+
+===================== HADOOP
+TIP：不创建HADOOP_HOME环境变量，与程序冲突
+-- 程序自动创建HADOOP_HOME环境变量
+
+1.创建环境变量HADOOP_INSTALL
+2.加入hadoop bin/sbin 到PATH变量中
+  

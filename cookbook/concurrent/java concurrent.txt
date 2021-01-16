@@ -1,0 +1,5 @@
+1. Collections.synchronizedSet 转换为现场安全集合
+2. volatile  多线程访问对象
+3. transient 关键字对于多线程的影响
+
+JobInterruptedException

@@ -1,0 +1,77 @@
+1. 命令JPS
+   查看当前运行的JAVA进程
+2. Hadoop独立模式并非分布式文件系统，只是利用了本地文件系统
+
+3. 伪分布模式下配置
+   
+   所有运行在一台机器上。配置参考 Hadoop.The.Definitive.Guide.4th.Edition.2015.3 书籍 Installing Apache Hadoop 章节
+   
+#  配置文件信息
+   Hadoop_DIR/ect/hadoop
+   1. core-site.xml 
+   2. hdfs-site.xml 
+   3. yarn-site.xml
+   4. mapred-site.xml.template
+   
+# 利用etc下hadoop原生文件列表，创建另外的伪分布模式 hadoop_pseudo
+  官方文档讲解三种方式的部署
+  https://hadoop.apache.org/docs/r2.10.1/hadoop-project-dist/hadoop-common/SingleCluster.html
+  cp -R hadoop hadoop_pseudo
+  
+  修改以下的文件
+  1. core-site.xml 
+  2. hdfs-site.xml 
+  3. yarn-site.xml
+  
+  创建 mapred-site.xml
+  cp mapred-site.xml.template mapred-site.xml
+
+  
+# 使用gedit *-site.xml 编辑对应的XML配置，参考数据初始配置XML
+
+  Tips：修改gedit缩进设定, edit > proference > editor > tab width.
+   
+# 安装SSH 服务器版本，不使用Ubuntu操作系统自带的，那个是客户端。
+  sudo apt-get install ssh
+  
+# 生成SSH 密钥
+  密钥对（公钥和密钥）
+  公钥加密
+  密钥解密
+  
+  因为是针对当前用户创建免密的SSH，所以放入到登陆用户下面的.ssh隐藏文件中
+  ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+
+  将公钥设定为授权密钥
+  cat id_rsa.pub >> ~/.ssh/authorized_keys
+  
+  可以使用 ssh localhost通过ssh登陆本机了，记得要exit退出。
+  
+4.格式化Hadoop文件系统
+  hadoop namenode -format
+  
+5.启动守护进程
+  指定配置目录
+  a.HADOOP_CONF_DIR	//环境变量
+  b.--conf  		//配置参数
+  在hadoop安装目录下运行
+  start-dfs.sh --config $HADOOP_INSTALL/etc/hadoop_pseudo
+  start-yarn.sh --config $HADOOP_INSTALL/etc/hadoop_pseudo
+
+6.启动查看
+	http://localhost:50070
+	http://localhost:8088
+	http://localhost:19888
+
+7. 关闭顺序，先关闭管理，后关闭资源
+# stop-yarn.sh
+# stop-hdfs.sh
+
+8. 通过环境变量方式修改hadoop的默认选项
+export HADOOP_CONF_DIR=$HADOOP_INSTALL/etc/hadoop_pseudo
+
+9. 创建hadoop 文件目录
+hadoop fs -mkdir /usr/
+
+  
+ 

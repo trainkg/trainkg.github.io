@@ -1,0 +1,23 @@
+1. Aggregator   聚合器
+2. Resolver		解析器
+3. Generator	生成器
+4. Handler		处理器
+5. Aware		Spring特有注入命名
+6. Digest		摘要
+7. encrypt/Encoder		加密
+8. decrypt/Decoder		解密
+9. provider 	资源提供者
+10. Comparator 	比较器
+11. Delegating  授权
+12. Voter		选民
+13. anonymous   匿名人选
+14. Evaluator 	评估器
+15. actuator	传动
+
+# 权限相关
+----------------------------
+credentials  			资格证书
+Authentication			身份验证(经过授权的用户对象)
+principal 				主角(用户)
+authorities 			权限项
+authenticate			(V) 验证

@@ -1,0 +1,34 @@
+Ubuntu 虚拟机安装
+#1. 系统选择
+	ubuntu-16.04.7-server-amd64.iso
+	vmware15 推荐
+	
+	密钥
+	UG5J2-0ME12-M89WY-NPWXX-WQH88
+	GA590-86Y05-4806Y-X4PEE-ZV8E0
+	YA18K-0WY8P-H85DY-L4NZG-X7RAD
+	UA5DR-2ZD4H-089FY-6YQ5T-YPRX6
+	B806Y-86Y05-GA590-X4PEE-ZV8E0
+	ZF582-0NW5N-H8D2P-0XZEE-Z22VA
+	
+#2. 网络模式的选择
+   > NAT 模式
+   所谓的nat模式，就是虚拟机自己相当于一个小型局域网，这个局域网内部有自己的网关地址，以及dhcp地址池。
+   虚拟机的ip地址为这个局域网中dhcp地址池中的某个ip地址。虚拟机所在的局域网跟物理机是处于两个不同的局域网的。
+   上网的时候将这个虚拟机ip地址nat为物理机的ip地址，也就是说当虚拟机想访问外网时，需要转换为物理机的出口地址。
+   > 桥接模式
+   所谓桥接模式，也就是虚拟机与宿主机处于同一个网段， 宿主机与虚拟机是平级关系， 例如两者都处于同一个局域网，具有相同的网关， 此时虚拟机相当于一台真实的设备
+   >host模式
+   虚拟机只能与物理机通信，不能与外网通信
+? NAT VMware无法连接网络
+  services.msc 检查VMware的服务是否正常启动。
+  
+？Failed to initialize policy for cpu: 0
+  升级到VMware 15
+  
+#3. 通过sudo passwd root设置root密码
+	P:sa123456
+	UserName:yuanyu
+
+#4 虚拟机锁定 + 解锁
+   ctrl + s, ctrl + q

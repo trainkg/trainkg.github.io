@@ -1,0 +1,9 @@
+参考文档
+https://lucene.apache.org/solr/guide/8_7/uploading-structured-data-store-data-with-the-data-import-handler.html#uploading-structured-data-store-data-with-the-data-import-handler
+
+DIH 配置处理问题
+------------------------------------------------------------------------------------------------------------------------
+	1. 	数据源规范|结构
+	2. 	数据库连接方式
+		只是数据库密码加密处理
+	3. 	solr document组织方式

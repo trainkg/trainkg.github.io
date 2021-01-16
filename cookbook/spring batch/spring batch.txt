@@ -1,0 +1,46 @@
+#JOB
+继承JOB接口对象 org.springframework.batch.core.Job
+对应的JOB工厂  org.springframework.batch.core.configuration.annotation.JobBuilderFactory
+
+#JOB - 特性
+1. Restartability 是否运行在一个jobinstance中重新执行。
+   如果设置false, 重新执行会抛出异常
+
+
+#Jobs 执行监听器
+ 声明式
+ org.springframework.batch.core.JobExecutionListener 
+ ::beforeJob ::afterJob
+ 注解式
+ @BeforeJob
+ @AfterJob
+ 
+#JOB执行参数校验
+
+#JOB CONFIG 带来的特性
+ @EnableBatchProcessing 
+ 自动注入一些BEAN
+ 注意下面没有 org.springframework.batch.core.configuration.annotation.DefaultBatchConfigurer
+ 虽然源码中有@Component注解，但是实际中并不会注册该bean, @EnableBatchProcessing实现中也是采用NEW的方式构建该对象。
+ 
+ 1. JobRepository 
+ 2. JobLauncher
+ 3. JobRegistry
+ 4. PlatformTransactionManager (job需要自己的事务管理器)
+ 5. JobBuilderFactory
+ 6. StepBuilderFactory
+ 
+ #关于spring boot的自动装配， 
+  org.springframework.boot.autoconfigure.batch.BatchConfigurerConfiguration
+  提供了更多的特性
+  
+  spring boot 提供了 org.springframework.boot.autoconfigure.batch.BasicBatchConfigurer
+  
+  org.springframework.boot.autoconfigure.batch.BatchConfigurerConfiguration 存在以下条件
+  @ConditionalOnMissingBean(BatchConfigurer.class)
+  
+  当自己实现batchconfigurer的时候，覆盖spring boot自己的自动装配对象
+  
+ 
+ # spring boot batch 自动运行配置 
+  

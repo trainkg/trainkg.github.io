@@ -1,0 +1,19 @@
+Spring security
+https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#nsa-form-login
+======================================================================================================================
+
+# 处理对象
+-----------------------------------------------------------------------------------------------------------------------
+  org.springframework.security.web.access.ExceptionTranslationFilter
+  
+# 默认支持的行为
+-----------------------------------------------------------------------------------------------------------------------
+  
+  默认只处理两种异常
+  
+  1. org.springframework.security.core.AuthenticationException
+  
+  
+  2. org.springframework.security.access.AccessDeniedException
+
+  

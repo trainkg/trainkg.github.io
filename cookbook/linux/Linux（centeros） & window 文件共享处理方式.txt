@@ -1,0 +1,7 @@
+1.	Window 设定需要共享的文件
+	例如共享文件名称为 \\WIN-20160425FOB\devsoft
+2.	sudo mount -t cifs -o username=zhuyy,password=120313 //192.168.0.101/devsoft /mnt
+    zhuyy: windows用户名
+	password: 操作系统密码
+	//192.168.0.101/devsoft: ip + 共享目录名称
+	/mnt 挂载目录

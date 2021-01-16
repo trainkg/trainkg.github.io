@@ -1,0 +1,28 @@
+Quartz 官方
+https://www.quartz-scheduler.org/
+
+#spring boot quart自动注册处理类
+ org.springframework.boot.autoconfigure.quartz.QuartzAutoConfiguration
+ 
+#quartz 最终调度执行类
+org.quartz.core.JobRunShell
+
+#spring整合quartz将job fatory 替换为了
+ org.springframework.scheduling.quartz.SpringBeanJobFactory
+ 在spring boot 中自动设定了为Job fatory为SpringBeanJobFactory, 并且重写了 createJobInstance 方法
+ 
+ 执行Job时候为即时创建 Job bean对象，可以不注册，但是对象可以使用@Autowired注入对象
+ 
+#spring batch 中JOB 任务执行器 SimpleJobLauncher 
+ 如果没有设定对应线程执行器，他将默认使用一个 SyncTaskExecutor ，同步执行
+ 
+#spring batch 接口 JobRegistry 解析
+ 功能职责：负责当前batch运行环境中的JOB 注册和取消注册
+ 
+# org.springframework.batch.core.configuration.support.AutomaticJobRegistrar
+ 作为一个有生命周期的对象，在系统启动的时候，自动注册job.
+ 基本流程 
+ 1. 扫描spring所有的上下文，获取JOB 接口的实现类，
+ 2. 分别记录在那个上下文中注册了那些JOB实现
+ 
+# AutomaticJobRegistrar 只有在 @EnableBatchProcessing(modular=true),中才会启用

@@ -1,0 +1,20 @@
+Spring security
+https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#servlet-filterchainproxy
+======================================================================================================================
+
+# 处理对象
+----------------------------------------------------------------------------------------------------------------------
+
+
+# 登陆成功
+----------------------------------------------------------------------------------------------------------------------
+
+     org.springframework.security.authentication.AuthenticationDetailsSource<C, T> 
+	 
+	 负责构建 Authentication.getDetails 信息,
+	 
+	 WEB 环境默认 org.springframework.security.web.authentication.WebAuthenticationDetails
+	 
+	 
+	 
+	 

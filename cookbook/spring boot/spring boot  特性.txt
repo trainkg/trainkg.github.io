@@ -1,0 +1,80 @@
+#官方文档URL
+https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features
+   
+#1. 启动失败监控
+    注册 FailureAnalyzers  
+	
+#2. Bean的懒加载
+    1. 减少应用启动时间
+    2. 缺点，由于启动时候延期创建bean, 如果bean的配置存在问题，会导致发现问题被推迟
+    总体来说该特性默认关闭
+	
+	开启方式
+	1. spring.main.lazy-initialization=true
+	2. SpringApplicationBuilder|SpringApplication 代码方法设定
+	
+#3. 启动时控制台/日志横幅设定
+    1. spring.banner.location
+	2. spring.banner.charset 默认UAT-8
+
+#4. 自定义Springapplication
+    public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(MySpringConfiguration.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+    }
+	采用编程式方式，自定义springapplication启动设定, 支持流式API SpringApplicationBuilder
+	
+#5. 独立服务状态检测
+   当前云服务情况下，
+   比如搞一些心跳包
+   1. ApplicationAvailability  注入接口可以知道当前application状态
+   
+#6、事件的监听和发布
+   spring 初始化成功之前的监听器
+   1. 编程式 SpringApplication.addListeners | SpringApplicationBuilder.listeners( 
+   2. 配置方式 org.springframework.context.ApplicationListener=com.example.project.MyListener
+   
+   系统启动各阶段都会发出相应的事件类型，如果想监听应用启动生命周期，可以利用
+     
+   关于事件的传播
+   1.  spring context 是有上下级关系的
+   2.  spring 事件会向上传播
+   
+   监听器识别事件来自那一个context
+   1. 监听器中注入applicationcontext
+   2. 使用ApplicationContextAware 
+   
+#7. web环境
+   因为不同的WEB环境使用spring 不同的上下文实现，spring boot提供了一套算法，自动识别当前需要使用的webcontext实现
+   默认对应关系如下
+   1. spring mvc AnnotationConfigServletWebServerApplicationContext 
+   2. spring flux AnnotationConfigReactiveWebServerApplicationContext 
+   3. others AnnotationConfigApplicationContext  
+   修改方式
+   setApplicationContextClass
+   setWebApplicationType
+   
+   web服务端口配置
+   local.server.port
+
+#8 系统启动参数
+   主要服务命令行，可以定制执行参数使用
+   ApplicationArguments 
+   
+#9.Using the ApplicationRunner or CommandLineRunner
+   系统启动成功后在接受服务之前，执行代码切入
+   1. 优势，可以访问系统启动参数
+   如果要设定执行顺序，可以借助spring order 接口|注解
+   
+#10. 程序退出
+  1、 组件实现DisposableBean 
+  2. @PreDestroy 注解
+  3. org.springframework.boot.ExitCodeGenerator spring boot设定系统退出状态
+  
+#11。管理
+ 主要还是JMX .  
+ spring.application.admin.enabled 配置开启  
+   
+   
+   

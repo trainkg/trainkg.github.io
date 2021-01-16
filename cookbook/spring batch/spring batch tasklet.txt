@@ -1,0 +1,8 @@
+org.springframework.batch.core.step.tasklet.TaskletStep
+
+?1. 多线程场景下，多少线程参与task的任务执行
+
+ 核心方法，doExecute.
+ 1.参与执行任务的线程数量未有固定的限制。
+ 
+

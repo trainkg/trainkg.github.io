@@ -1,0 +1,16 @@
+#官方文档URL
+https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features
+
+1. 默认的配置文件 messages.properties
+   
+
+
+  
+  
+  
+  
+  
+  
+    
+    
+  

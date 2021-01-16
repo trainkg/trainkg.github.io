@@ -1,0 +1,12 @@
+#. COOKBOOK
+   https://www.quartz-scheduler.org/documentation/quartz-2.3.0/cookbook/
+  
+#. quartz 查询接口层级
+   
+   Scheduler > JobStore > DriverDelegate 
+   
+   Scheduler 总管所以JOB相关管理
+   Job store 管理所有JOB定义，屏蔽不同实现方式
+   DriverDelegate 负责不同方式的JOB存储定义，常规的是 LocalDataSourceJobStore
+   
+#. 

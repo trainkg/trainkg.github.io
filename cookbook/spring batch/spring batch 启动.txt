@@ -1,0 +1,8 @@
+1. Job Key 
+  spring batch 通过batch job 来识别唯一的job.
+  通过JobKeyGenerator提供的默认实现（DefaultJobKeyGenerator） 加密方式获得密文作为JOB KEY。
+2. spring batch 任务多线程执行方式是不能指定线程数量的
+3. 区分两个task executor
+	- applicationTaskExecutor: defined by method 'applicationTaskExecutor' in class path resource [org/springframework/boot/autoconfigure/task/TaskExecutionAutoConfiguration.class]
+	- taskScheduler: defined by method 'taskScheduler' in class path resource [org/springframework/boot/autoconfigure/task/TaskSchedulingAutoConfiguration.class]
+

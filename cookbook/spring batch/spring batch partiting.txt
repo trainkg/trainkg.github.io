@@ -1,0 +1,7 @@
+# spring batch 分片处理
+
+spring 提供了SPI供外部扩展
+
+#TODO
+ 计划提供一个分片SPI实现
+ 

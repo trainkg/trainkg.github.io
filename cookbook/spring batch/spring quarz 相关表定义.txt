@@ -1,0 +1,5 @@
+源码查看 org.quartz.impl.jdbcjobstore.Constants
+
+1. JOB_DETAILS 定义了定时任务JOB类型
+   表相当于JOB定义，在quartz正常调度中，如果配置的是DB方式，会自动持久化在数据库表中
+   isDurable 如果是false,在执行完毕之后会删除记录。

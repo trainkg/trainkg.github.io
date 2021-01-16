@@ -1,0 +1,55 @@
+问题
+1. 软件存在大量的依赖关联
+
+> Ubuntu修改软件源
+sudo nano /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get upgrade
+
+使用163的镜像文件
+http://mirrors.163.com/.help/ubuntu.html
+Tips： 选择相应的服务器版本文件
+
+
+> Ubuntu软件包操作
+>> sudo apt-get install xxx
+安装
+>> sudo apt-cache search xxx
+查找软件包
+>> sudo apt-get remove xxx
+卸载，不会删除安装软件
+>> sudo apt-get purge xxx
+完全删除
+>> sudo apt-get update
+>> sudo apt-get upgrade
+>> sudo dpkg -l | grep xxx
+查看本地安装
+
+> 安装ubunt的桌面程序
+sudo apt-cache search desktop
+sudo apt-get install ubuntu-desktop
+
+> Ubuntu安装VM增强工具
+	和host共享文件夹
+	鼠标自动扑捉释放
+	高分屏
+	自适应窗口
+
+> 增强工具的安装
+
+1.vmware->虚拟机菜单->安装vmware-tool工具
+2.client打开linux.so
+3.复制VMwareTools-9.6.0-1294478.tar.gz到桌面
+4.释放VMwareTools-9.6.0-1294478.tar.gz到这里
+5.打开terminal
+6.cd /home/$USER/Desktop/vmware-tools-distrib
+7.sudo ./vmware-install.pl
+8.一路回车su
+
+> 配置窗口自适应
+1.编辑虚拟机配置
+2.虚拟机->设置->硬件->显示器->监视器设置->分辨率
+   设置电脑显示器的分辨率
+3.客户机->查看->自动调整大小->自动适应窗口
+
+

@@ -1,0 +1,8 @@
+Spring security
+https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#servlet-filterchainproxy
+======================================================================================================================
+
+# 处理对象
+----------------------------------------------------------------------------------------------------------------------
+
+	org.springframework.security.web.authentication.logout.LogoutFilter

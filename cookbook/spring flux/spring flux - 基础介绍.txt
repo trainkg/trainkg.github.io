@@ -1,0 +1,47 @@
+# spring flux
+---
+### URL
+> https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#spring-webflux
+
+主题观念是使用NIO多路复用技术，提高系统并发量。从servlet3.1开始支持NIO, NIO不能替代传统的BIO
+主要的参考指标为服务传输的IO量，如果是传统打开页面的处理不太适用，主要只针对API(end point)的开发，比较符合
+目前的微服务的趋势。 所以在未来的结果中我们会采用SPRING MAV + SPRING WEB FLUX的方式支持未来的项目技术结构
+使项目的性能能够进一步的提高。
+
+
+### HTTP 客户端
+---
+* spring flux 针对HTTP客户端做了统一的封装，可以通过统一的静态工程`org.springframework.web.reactive.function.client.WebClient`
+  去构建一个HTTP客户端
+ 
+### 方法介绍
+---
+* retrieve
+
+  访问对应的HTTP资源，后续可以提取相应中的信息
+
+* Exchange(`exchangeToMono`)
+
+  相当于前端AJAX获取HTTP状态码，针对状态码做详细的逻辑定制，retrieve相当于相应HTTP STATUS 200
+  
+* request Body(`body`)
+
+  负责转换HTTP请求参数中的对象转换，相当于传统HTTP的表单信息
+  
+* Filters(`filter`)
+
+  可以在构建HTTP客户端的时候注册filter(`ExchangeFilterFunction`),可以用来拦截和修改请求内容，比如可以用来做权限控制
+  
+* Attributes(`attribute`)
+  
+  给当前请求添加一些变量，相当于请求上下文，在过滤器链中可以读取并且作为逻辑条件
+  
+* Context(`contextWrite`)
+  
+  提供给嵌套请求使用，HTTP A调用HTTP B, 共享上下文
+  
+* Synchronous Use (`block`)
+ 
+  可以将当前请求设定为同步状态 
+
+  

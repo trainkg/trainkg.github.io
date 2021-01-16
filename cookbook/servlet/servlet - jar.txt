@@ -1,0 +1,27 @@
+servlet 规范
+
+=================================================================================================================================================
+
+#. JAR 包信息
+-------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	1. jstl.jar (Java server pages standarded tag library, 即JSP标准标签库) , 负责JSP中使用的标签
+	
+		包路径信息 :javax.servlet.jsp.jstl
+	
+	2. javax.servet-api.jar
+		
+		servlet 相关规范定义，request, session, application etc...
+		
+		包路径信息 :javax.servlet
+		
+	3.  jasper.jar 
+	
+		包路径信息 :javax.el 规范
+		org.apache.el.
+		
+		el (Expression Language) , 提供jsp中 {a.b} 这样的写法支持
+	
+	  
+	
+	

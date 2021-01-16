@@ -1,0 +1,41 @@
+Spring security
+
+	官方文档
+		https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#servlet-filterchainproxy
+	官方示例	
+		https://github.com/spring-projects/spring-security/tree/5.4.2/samples
+======================================================================================================================
+
+# Servlet Security
+----------------------------------------------------------------------------------------------------------------------
+  1. 采用 Filter 链表方式处理客户请求
+  
+  2. DelegatingFilterProxy
+     这个是一个桥接模式
+	 > 在正常的servlet filter 启动注册的时候，是在servlet context级别的，但是有一些bean需要注册为spring bean
+	   因为生命周期的关系, 需要在spring context之后才能够实例化最终的filter元素。
+	   
+	   所以通过该对象（自身实现了filter）, 做为一个连接 spring filter 和 servlet context直接的桥梁
+  
+  3. FilterChainProxy 
+	 可以使用他做多个filter代理
+	 
+  4. SecurityFilterChain
+     用于 filterChainProxy , 为filter列表提供了一个匹配策略，用于判断是否处理当前的请求，最终得到一个针对当前请求的
+	 过滤器列表。
+	 
+	 匹配接口  org.springframework.security.web.util.matcher.RequestMatcher
+	 默认使用的是 org.springframework.security.web.util.matcher.AntPathRequestMatcher
+	 
+   
+  5. Security Filters
+	 查看文档支持的filter列表
+	
+  6. 权限异常处理
+    
+	 异常处理也是通过filter来执行的 ExceptionTranslationFilter 
+	 针对两个两个异常
+	 1. AccessDeniedException 
+	 2. AuthenticationException
+	 
+	
