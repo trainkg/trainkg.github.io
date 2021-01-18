@@ -110,7 +110,7 @@ myrandom=${cachedrandom.appname.value}
 
 如果服务使用`UserInfoTokenServices` 
 
-### 7 附件
+### 7. 附件
 
 Spring cloud common 相关联的全量配置参考 [the Appendix page](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/appendix.html).
 
