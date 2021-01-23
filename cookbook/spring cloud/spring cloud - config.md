@@ -53,7 +53,7 @@ HTTP资源验证
 
 ```
 /{application}/{profile}[/{label}]
-返回application+(application-profile)+label目录下的（application-profile）
+返回application+(application-profile)+label目录下的（application-profile）+ label 目录下的application
 /{application}-{profile}.yml
 /{label}/{application}-{profile}.yml
 /{application}-{profile}.properties
@@ -121,6 +121,17 @@ org.springframework.cloud.config.server.config.EncryptionAutoConfiguration
 > 本地模式解析类是`org.springframework.cloud.config.server.config.NativeRepositoryConfiguration`
 >
 > [systemProperties, systemEnvironment, servletContextInitParams, vcap, servletConfigInitParams, jndiProperties] 不可使用
+
+
+
+**本地模式配置**
+
+> 必须使用 '/' 结尾，在配合label的时候，会在原有的路径上拼接 /label进行相关查找
+
+```properties
+# spring.cloud.config.server.native.searchLocations=file:///D:/zsqworkspace/expect configuration/config-repo/
+spring.cloud.config.server.native.searchLocations=classpath:/config/	
+```
 
 
 
