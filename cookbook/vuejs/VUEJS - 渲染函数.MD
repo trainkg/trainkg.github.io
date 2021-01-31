@@ -590,3 +590,7 @@ Vue.component('my-functional-button', {
 
 对于这个组件，`children` 会给你两个段落标签，而 `slots().default` **只会传递第二个匿名段落标签**，`slots().foo` 会传递第一个具名段落标签。同时拥有 `children` 和 `slots()`，因此你可以选择让组件感知某个插槽机制，还是简单地通过传递 `children`，移交给其它组件去处理。
 
+
+
+[组件]: https://www.jianshu.com/p/3ae16fba1fe9	"动态组件"
+
