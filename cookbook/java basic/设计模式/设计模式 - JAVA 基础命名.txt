@@ -13,6 +13,10 @@
 13. anonymous   匿名人选
 14. Evaluator 	评估器
 15. actuator	传动
+16. Strategy 	策略
+17. vendor	    小贩，零散轻量各种服务实现集合
+18. pool 		池
+19. 
 
 # 权限相关
 ----------------------------

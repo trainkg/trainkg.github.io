@@ -47,18 +47,36 @@ public class ConfigServerApplication {
 }
 ```
 
+环境存储信息结构
+
+三个元素， 目录结构 profile/application-[lable].properties
+
+- application
+- profile
+- label
+
+
+
 HTTP资源验证
 
 > ##### 支持方式可以查看源码 EnvironmentController
 
-```
+```properties
+# URL 自动汇总配置信息
 /{application}/{profile}[/{label}]
 返回application+(application-profile)+label目录下的（application-profile）+ label 目录下的application
+# 访问指定文件，也表明了文件存储格式
 /{application}-{profile}.yml
+# 访问指定文件，也表明了文件存储格式
 /{label}/{application}-{profile}.yml
+# 访问指定文件，也表明了文件存储格式
 /{application}-{profile}.properties
+# 访问指定文件，也表明了文件存储格式
 /{label}/{application}-{profile}.properties
+
 ```
+
+
 
 **客户端连接**
 

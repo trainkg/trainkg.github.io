@@ -1,0 +1,3 @@
+#查看NMP的存储路径
+npm config list.
+
