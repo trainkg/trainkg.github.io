@@ -1,40 +1,52 @@
-Spring security
-	https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#servlet-filterchainproxy
+## Spring security Configuration
 
-	XML 配置具体查看
-	https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#appendix-namespace
-======================================================================================================================
+XML 配置具体查看
 
-# JAVA 方式
+> https://docs.spring.io/spring-security/site/docs/5.3.4.RELEASE/reference/html5/#appendix-namespace
+
+```
+Authentication  [ɔːˌθentɪˈkeɪʃn] 身份验证，负责对于资源的授权验证
+Authorization   [ˌɔːθərəˈzeɪʃn]  授权，负责权限信息相关扩展
+```
+
+
+
+### JAVA 方式
 ----------------------------------------------------------------------------------------------------------------------
 	@EnableWebSecurity
 	只用于展示，混合了大量的功能特性
-	
 
-# XML 方式
+#### [JAVA 配置核心]( 12.3.14. Overriding or Replacing Boot Auto Configuration)
+
+
+
+### XML 方式
+
 	https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#ns-minimal
-----------------------------------------------------------------------------------------------------------------------	
-	
+----------------------------------------------------------------------------------------------------------------------
+
 	最小配置: 拦截系统所有的请求, 拥有角色USER.
 	<http>
 	<intercept-url pattern="/**" access="hasRole('USER')" />
 	<form-login />
 	<logout />
 	</http>
-	
-	
-# XML 元素
-----------------------------------------------------------------------------------------------------------------------		
+
+
+​	
+### XML 元素
+----------------------------------------------------------------------------------------------------------------------
 	1. <http> 负责创建filterChainProxy和使用的过滤器列表
 	2. <authentication-provider> 提供了
 		DaoAuthenticationProviderbean
 	3. <user-service> 
 		InMemoryDaoImpl 内存中提供用户信息
 
-		
-# XML 元素 -- <form-login> 
-----------------------------------------------------------------------------------------------------------------------		
-	
+
+​		
+### XML 元素 -- <form-login> 
+----------------------------------------------------------------------------------------------------------------------
+
 	. always-use-default-target  
 		
 		如果设置为TRUE, 登陆成功之后永远访问的是 default_target_url设定， 和客户采用那种方式登陆的无关
@@ -94,14 +106,13 @@ Spring security
 	 . UsernamePasswordAuthenticationFilter 
 	  
 	    这个字段值对应的是 UsernamePasswordAuthenticationFilter.authenticationFailureHandler    属性,
-	 
-		
-		
-		
-# XML 元素 -- <intercept-url>	
+
+
+
+### XML 元素 -- <intercept-url>	
 	表达式URL
 	https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#el-access-web	
-----------------------------------------------------------------------------------------------------------------------		
+----------------------------------------------------------------------------------------------------------------------
 	设定系统URL权限过滤方式
 	
 	. Access 属性
@@ -110,7 +121,8 @@ Spring security
 	
 	. Access 表达式支持列表
 		https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#el-access
-		
-		
-	
-	
+
+
+​		
+​	
+​	

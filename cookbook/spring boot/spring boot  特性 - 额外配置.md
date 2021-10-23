@@ -1,37 +1,47 @@
-#官方文档URL
+## #官方文档URL
+
+[TOC]
+
 https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features
-   
-#1. 扩展配置
+
+### 扩展配置
+
   1. properties file
   2. yaml 类似json数据类型的配置文件
   3. envrionment variables
   4. JVM执行参数
-  
+
   使用方式 
   > @Value 直接绑定bean 
   > @ConfigurationProperties 直接绑定到一个配置对象上
-  
+
+
+
+### 配置优先级
+
   》 基于配置方式的多种多样，所以需要一个优先顺序支持配置的覆盖
-  
+
   1. Devtools global settings properties in the $HOME/.config/spring-boot directory when devtools is active.
-  2.@TestPropertySource annotations on your tests.
-  3.properties attribute on your tests. Available on @SpringBootTest and the test annotations for testing a particular slice of your application.
-  4.Command line arguments.
-  5.Properties from SPRING_APPLICATION_JSON (inline JSON embedded in an environment variable or system property).
-  6.ServletConfig init parameters.
-  7.ServletContext init parameters.
-  8.JNDI attributes from java:comp/env.
-  9.Java System properties (System.getProperties()).
-  10.OS environment variables.
-  11.A RandomValuePropertySource that has properties only in random.*.
-  12.Profile-specific application properties outside of your packaged jar (application-{profile}.properties and YAML variants).
-  13.Profile-specific application properties packaged inside your jar (application-{profile}.properties and YAML variants).
-  14.Application properties outside of your packaged jar (application.properties and YAML variants).
-  15.Application properties packaged inside your jar (application.properties and YAML variants).
-  16.@PropertySource annotations on your @Configuration classes. Please note that such property sources are not added to the Environment until the application context is being refreshed. This is too late to configure certain properties such as logging.* and spring.main.* which are read before refresh begins.
-  17.Default properties (specified by setting SpringApplication.setDefaultProperties).
-  
-#2. 扩展配置之通配符
+
+    2.@TestPropertySource annotations on your tests.
+    3.properties attribute on your tests. Available on @SpringBootTest and the test annotations for testing a particular slice of your application.
+    4.Command line arguments.
+    5.Properties from SPRING_APPLICATION_JSON (inline JSON embedded in an environment variable or system property).
+    6.ServletConfig init parameters.
+    7.ServletContext init parameters.
+    8.JNDI attributes from java:comp/env.
+    9.Java System properties (System.getProperties()).
+    10.OS environment variables.
+    11.A RandomValuePropertySource that has properties only in random.*.
+    12.Profile-specific application properties outside of your packaged jar (application-{profile}.properties and YAML variants).
+    13.Profile-specific application properties packaged inside your jar (application-{profile}.properties and YAML variants).
+    14.Application properties outside of your packaged jar (application.properties and YAML variants).
+    15.Application properties packaged inside your jar (application.properties and YAML variants).
+    16.@PropertySource annotations on your @Configuration classes. Please note that such property sources are not added to the Environment until the application context is being refreshed. This is too late to configure certain properties such as logging.* and spring.main.* which are read before refresh begins.
+    17.Default properties (specified by setting SpringApplication.setDefaultProperties).
+
+### #2. 扩展配置之通配符
+
   spring boot配置支持通配符方式
   默认的扫描路径是 config/*/
   可以使用配置 spring.config.additional-location & spring.config.location 指定配置文件所在路径
@@ -39,10 +49,12 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-featu
   > 通配符配置逻辑为目录
   > 读取文件顺序为字幕排序
 
-#3. 随机数配置
+### #3. 随机数配置
+
   主要使用于测试阶段，可以参数的数据为
   》 interger
   》 longs
+
   >  uuid
   >  string
   示例
@@ -52,103 +64,106 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-featu
    my.uuid=${random.uuid}
    my.number.less.than.ten=${random.int(10)}
    my.number.in.range=${random.int[1024,65536]}
-   
-#4. 命令行参数
+
+### #4. 命令行参数
+
   springapplication默认转换命令行参数（--开始） ，加入的property中， 并且优先级是最高的。 参考扩展配置排序（#4）
-  
+
   支持开关特性
   SpringApplication.setAddCommandLineProperties(false).
-  
-#5. application properties 
+
+### #5. application properties 
+
   文件名称 application.properties
   默认的扫描目录
+
   1. A /config subdirectory of the current directory
   2. The current directory
   3. A classpath /config package （JAR）
   4. The classpath root
-  
+
   》可以使用 spring.config.name 变量自定义扫描文件名称
-  
+
   自定义配置文件目录的方式
   1. 完全覆盖方式 spring.config.location 
-  classpath:/custom-config/,file:./custom-config/
-  扫描优先级，从后向前 
-	1.file:./custom-config/
-	2.classpath:custom-config/
+
+    classpath:/custom-config/,file:./custom-config/
+    扫描优先级，从后向前 
+    1.file:./custom-config/
+    2.classpath:custom-config/
 
   2. 增量方式 spring.config.additional-location
-  添加自己的文件扫描路径，优先于spring boot的默认路径
+
+    添加自己的文件扫描路径，优先于spring boot的默认路径
   1. file:./custom-config/
   2. classpath:custom-config/
   3. default list
-  
-#6. Profile-specific Properties
+
+### #6. Profile-specific Properties
+
   针对不同环境，我们通常使用profile的方式去支持不同场景下的参数配置问题
-  
+
   命名规则
   application-{profile}.properties
-  
+
   存在一个默认的profile配置
   application-default.properties （当没有指定profile的时候， 从结构上来说对参数的类型做了划分）
   在applicatoin中可以和profile存在相同的配置项，但是会被profile中的配置所覆盖
-  
+
   profile的指定
   spring.profiles.active （支持多个设定）
-  
+
   如果你使用完全覆盖模式指定的明确的文件，profile机制将会失效，所以建议指定目录
-  
-#7. 配置文件中的占位符特性
+
+### #7. 配置文件中的占位符特性
+
   配置信息，后续的配置可以使用之前配置KEY作为占位符替代，示例
   app.name=MyApp
   app.description=${app.name} is a Spring Boot application
-  
-#8. 加密配置信息
+
+### #8. 加密配置信息
+
   spring 不提供，这个主要是设计到加密算法，密钥等设定，针对配置来说有点非本职该干的
   不过spring 提供了对properties加工 EnvironmentPostProcessor 
 
-#9. Yaml 方式配置
+### #9. Yaml 方式配置
+
   主要是有层次，能体现结构。比较好。
   spring 提供了yaml 的解析 YamlPropertiesFactoryBean 
-  
-#10. @ConfigurationProperties("acme") 直接绑定对象，绑定对象的get/set不要直接使用，毕竟配置文件还是有管理流程的
 
-#11. @ConstructorBinding 标记在class类上，标记该类的初始化启用构造器绑定
+### #10. @ConfigurationProperties("acme") 直接绑定对象，绑定对象的get/set不要直接使用，毕竟配置文件还是有管理流程的
+
+### #11. @ConstructorBinding 标记在class类上，标记该类的初始化启用构造器绑定
+
  @DefaultValue 注解可以帮助你当么有对应的配置的时候，搞一个默认值
- 
+
  多个构造器，可以直接将注解设定在你想要的构造器上。
 
-#12. @EnableConfigurationProperties
+### #12. @EnableConfigurationProperties
+
   将 @ConfigurationProperties 绑定的对象注册为一个Bean
   bean name : conventional name: <prefix>-<fqn>
   然后就可以当作正常的spring bean 进行注入绑定。
-  
-#13. 配置参数转换
+
+### #13. 配置参数转换
+
   三种转换方式
+
   1. 提供一个 conversionService （bean name ConversionService ）
   2. 提供一个spring的 property editors(通过CustomEditorConfigurer)， 和其他binding处理一直
   3. 提供一个转换器 Converters  @ConfigurationPropertiesBinding
-  
+
   时间转换注解 @DurationUnit
   空间大小转换注解 @DataSizeUnit
-  
-#14.配置信息校验
+
+### #14.配置信息校验
+
   基于JSR-303规则， 为配置还整一套校验，估计项目不同意
-  
-#15. @ConfigurationProperties vs. @Value 对比
+
+### #15. @ConfigurationProperties vs. @Value 对比
 
   @Vaule 支持SPEL ，主要还是支持运行时上下文中数据的绑定
   @ConfigurationProperties 主要使用於环境启动/运行参数
-  
 
- 
 
-    
-  
-  
-  
-  
-  
-  
-    
-    
-  
+

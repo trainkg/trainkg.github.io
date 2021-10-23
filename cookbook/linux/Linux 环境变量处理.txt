@@ -1,4 +1,4 @@
 1. 环境变量位置
- /etc/envrionment
+  /etc/envrionment
 2. 环境变量立刻生效
   source environment

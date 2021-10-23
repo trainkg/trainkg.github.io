@@ -1,41 +1,40 @@
 Spring security
 
-	¹Ù·½ÎÄµµ
+	å®˜æ–¹æ–‡æ¡£
 		https://docs.spring.io/spring-security/site/docs/5.4.2/reference/html5/#servlet-filterchainproxy
-	¹Ù·½Ê¾Àı	
+	å®˜æ–¹ç¤ºä¾‹	
 		https://github.com/spring-projects/spring-security/tree/5.4.2/samples
 ======================================================================================================================
 
 # Servlet Security
 ----------------------------------------------------------------------------------------------------------------------
-  1. ²ÉÓÃ Filter Á´±í·½Ê½´¦Àí¿Í»§ÇëÇó
+  1. é‡‡ç”¨ Filter é“¾è¡¨æ–¹å¼å¤„ç†å®¢æˆ·è¯·æ±‚
   
   2. DelegatingFilterProxy
-     Õâ¸öÊÇÒ»¸öÇÅ½ÓÄ£Ê½
-	 > ÔÚÕı³£µÄservlet filter Æô¶¯×¢²áµÄÊ±ºò£¬ÊÇÔÚservlet context¼¶±ğµÄ£¬µ«ÊÇÓĞÒ»Ğ©beanĞèÒª×¢²áÎªspring bean
-	   ÒòÎªÉúÃüÖÜÆÚµÄ¹ØÏµ, ĞèÒªÔÚspring contextÖ®ºó²ÅÄÜ¹»ÊµÀı»¯×îÖÕµÄfilterÔªËØ¡£
-	   
-	   ËùÒÔÍ¨¹ı¸Ã¶ÔÏó£¨×ÔÉíÊµÏÖÁËfilter£©, ×öÎªÒ»¸öÁ¬½Ó spring filter ºÍ servlet contextÖ±½ÓµÄÇÅÁº
+     è¿™ä¸ªæ˜¯ä¸€ä¸ªæ¡¥æ¥æ¨¡å¼
+	 > åœ¨æ­£å¸¸çš„servlet filter å¯åŠ¨æ³¨å†Œçš„æ—¶å€™ï¼Œæ˜¯åœ¨servlet contextçº§åˆ«çš„ï¼Œä½†æ˜¯æœ‰ä¸€äº›beanéœ€è¦æ³¨å†Œä¸ºspring bean
+	   å› ä¸ºç”Ÿå‘½å‘¨æœŸçš„å…³ç³», éœ€è¦åœ¨spring contextä¹‹åæ‰èƒ½å¤Ÿå®ä¾‹åŒ–æœ€ç»ˆçš„filterå…ƒç´ ã€‚
+	
+	   æ‰€ä»¥é€šè¿‡è¯¥å¯¹è±¡ï¼ˆè‡ªèº«å®ç°äº†filterï¼‰, åšä¸ºä¸€ä¸ªè¿æ¥ spring filter å’Œ servlet contextç›´æ¥çš„æ¡¥æ¢
   
   3. FilterChainProxy 
-	 ¿ÉÒÔÊ¹ÓÃËû×ö¶à¸öfilter´úÀí
-	 
-  4. SecurityFilterChain
-     ÓÃÓÚ filterChainProxy , ÎªfilterÁĞ±íÌá¹©ÁËÒ»¸öÆ¥Åä²ßÂÔ£¬ÓÃÓÚÅĞ¶ÏÊÇ·ñ´¦Àíµ±Ç°µÄÇëÇó£¬×îÖÕµÃµ½Ò»¸öÕë¶Ôµ±Ç°ÇëÇóµÄ
-	 ¹ıÂËÆ÷ÁĞ±í¡£
-	 
-	 Æ¥Åä½Ó¿Ú  org.springframework.security.web.util.matcher.RequestMatcher
-	 Ä¬ÈÏÊ¹ÓÃµÄÊÇ org.springframework.security.web.util.matcher.AntPathRequestMatcher
-	 
-   
-  5. Security Filters
-	 ²é¿´ÎÄµµÖ§³ÖµÄfilterÁĞ±í
+	 å¯ä»¥ä½¿ç”¨ä»–åšå¤šä¸ªfilterä»£ç†
 	
-  6. È¨ÏŞÒì³£´¦Àí
-    
-	 Òì³£´¦ÀíÒ²ÊÇÍ¨¹ıfilterÀ´Ö´ĞĞµÄ ExceptionTranslationFilter 
-	 Õë¶ÔÁ½¸öÁ½¸öÒì³£
+  4. SecurityFilterChain
+     ç”¨äº filterChainProxy , ä¸ºfilteråˆ—è¡¨æä¾›äº†ä¸€ä¸ªåŒ¹é…ç­–ç•¥ï¼Œç”¨äºåˆ¤æ–­æ˜¯å¦å¤„ç†å½“å‰çš„è¯·æ±‚ï¼Œæœ€ç»ˆå¾—åˆ°ä¸€ä¸ªé’ˆå¯¹å½“å‰è¯·æ±‚çš„
+	 è¿‡æ»¤å™¨åˆ—è¡¨ã€‚
+	
+	 åŒ¹é…æ¥å£  org.springframework.security.web.util.matcher.RequestMatcher
+	 é»˜è®¤ä½¿ç”¨çš„æ˜¯ org.springframework.security.web.util.matcher.AntPathRequestMatcher
+	
+  5. Security Filters
+	 æŸ¥çœ‹æ–‡æ¡£æ”¯æŒçš„filteråˆ—è¡¨
+	
+  6. æƒé™å¼‚å¸¸å¤„ç†
+     
+	 å¼‚å¸¸å¤„ç†ä¹Ÿæ˜¯é€šè¿‡filteræ¥æ‰§è¡Œçš„ ExceptionTranslationFilter 
+	 é’ˆå¯¹ä¸¤ä¸ªä¸¤ä¸ªå¼‚å¸¸
 	 1. AccessDeniedException 
 	 2. AuthenticationException
-	 
+	
 	
