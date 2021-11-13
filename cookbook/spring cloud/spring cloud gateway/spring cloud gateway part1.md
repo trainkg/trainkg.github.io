@@ -282,7 +282,7 @@ spring:
 
 ### Filter 工厂
 
-Router filters 是运行修改请求和响应的
+Router filters 是运行时修改请求和响应的
 
 #### [The `AddRequestHeader` `GatewayFilter` Factory](https://docs.spring.io/spring-cloud-gateway/docs/2.2.9.RELEASE/reference/html/#the-addrequestheader-gatewayfilter-factory)
 
