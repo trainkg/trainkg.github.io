@@ -20,3 +20,30 @@ npm config get prefix
 npm config set prefix * 
 ```
 
+### 查看包版本列表
+
+```shell
+npm view webpack versions
+```
+
+
+
+### NPM 导入
+
+```
+-- 本地安装
+npm uninstall webpack webpack-cli -D
+-- 全局安装
+npm install webpack webpack-cli -g
+--
+npm install style-loader@2.0.0 -D
+```
+
+
+
+### NPM 取消导入 - 本地卸载
+
+```undefined
+npm uninstall webpack webpack-cli -D
+```
+
